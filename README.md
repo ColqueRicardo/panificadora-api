@@ -74,5 +74,5 @@ Nest is [MIT licensed](LICENSE).
 
 
 <!--
-ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-entities" "C:/Users/rc/Desktop/project test/nest/generic_result_nest/src/main" typeUser
+ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-entities" "C:\Users\rc\Desktop\project test\implements\panificadora\panificadora-api\src\admin" users
  -->
