@@ -1,16 +1,15 @@
-import { BaseEntity, CreateDateColumn, DeleteDateColumn, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm'
+import { BaseEntity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from 'typeorm';
 
 export abstract class GenericEntity extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
-  @CreateDateColumn({ type: "datetime" })
-  createdAt?: Date
+  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt?: Date;
 
-  @UpdateDateColumn({ type: "datetime", default: null })
-  updatedAt?: Date
+  @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
+  updatedAt?: Date;
 
-  @DeleteDateColumn({ type: "datetime", default: null })
-  deletedAt?: Date
-
+  @DeleteDateColumn({ type: 'timestamp', nullable: true })
+  deletedAt?: Date;
 }

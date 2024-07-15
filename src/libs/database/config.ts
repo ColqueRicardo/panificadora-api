@@ -14,7 +14,7 @@ export const DatabaseProvider: DynamicModule = TypeOrmModule.forRootAsync({
       username: process.env.DB_USER,
       password: process.env.DB_PASS,
       database: process.env.DB_DATABASE,
-      synchronize: JSON.parse(`${process.env.BD_SYNCHRONIZE}`),
+      synchronize: JSON.parse(`${process.env.DB_SYNCHRONIZE}`),
       logging: JSON.parse(`${process.env.DB_LOGGING}`),
       entities: getMetadataArgsStorage().tables.map((tbl) => tbl.target),
     }
