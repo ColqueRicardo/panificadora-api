@@ -18,8 +18,7 @@ ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-enti
 
 ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-entities" "C:\Users\rc\Desktop\project test\implements\panificadora\panificadora-api\src\admin" purchase
 
-ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-entities" "C:\Users\rc\Desktop\project
-test\implements\panificadora\panificadora-api\src\admin" sale
+ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-entities" "C:\Users\rc\Desktop\project test\implements\panificadora\panificadora-api\src\admin" sale
 
 ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-entities" "C:\Users\rc\Desktop\project test\implements\panificadora\panificadora-api\src\admin" sale-detail
 
