@@ -1,5 +1,6 @@
 import { Product } from 'src/admin/product/entity/product.entity'
 import { Purchase } from 'src/admin/purchase/entity/purchase.entity'
+import { SupplierProduct } from 'src/admin/supplier-product/entity/supplier-product.entity'
 import { GenericEntity } from 'src/libs/class/entity'
 import { Column, Entity, OneToMany } from 'typeorm'
 
@@ -22,8 +23,8 @@ export class Supplier extends GenericEntity {
   @Column()
   address: string
 
-  @OneToMany(() => Product, product => product.supplier)
-  products: Promise<Product[]>
+  @OneToMany(() => SupplierProduct,supplierProduct => supplierProduct.supplier)
+  supplierProducts: Promise<SupplierProduct[]>
 
   @OneToMany(() => Purchase, product => product.supplier)
   purchases: Promise<Purchase[]>

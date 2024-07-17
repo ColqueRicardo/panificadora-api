@@ -1,3 +1,4 @@
+import { Purchase } from 'src/admin/purchase/entity/purchase.entity'
 import { WarehouseProduct } from 'src/admin/warehouse-product/entity/warehouse-product.entity'
 import { GenericEntity } from 'src/libs/class/entity'
 import { Column, Entity, OneToMany } from 'typeorm'
@@ -15,4 +16,7 @@ export class Warehouse extends GenericEntity {
 
   @OneToMany(() => WarehouseProduct, warehouseProduct => warehouseProduct.warehouse)
   stocks: Promise<WarehouseProduct[]>
+
+  @OneToMany(() => Purchase, purchase => purchase.warehouse)
+  purchases: Promise<Purchase[]>
 }

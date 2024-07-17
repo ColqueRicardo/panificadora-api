@@ -14,6 +14,8 @@ ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-enti
 
 ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-entities" "C:\Users\rc\Desktop\project test\implements\panificadora\panificadora-api\src\admin" movement
 
+ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-entities" "C:\Users\rc\Desktop\project test\implements\panificadora\panificadora-api\src\admin" movement-type
+
 ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-entities" "C:\Users\rc\Desktop\project test\implements\panificadora\panificadora-api\src\admin" store
 
 ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-entities" "C:\Users\rc\Desktop\project test\implements\panificadora\panificadora-api\src\admin" purchase
@@ -24,9 +26,7 @@ ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-enti
 
 ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-entities" "C:\Users\rc\Desktop\project test\implements\panificadora\panificadora-api\src\admin" purchase-detail
 
-
-
-
+ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-entities" "C:\Users\rc\Desktop\project test\implements\panificadora\panificadora-api\src\admin" supplier-product
 
 
 <!-- docker-compose-up -->

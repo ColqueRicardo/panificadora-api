@@ -1,5 +1,6 @@
 import { Product } from 'src/admin/product/entity/product.entity'
 import { Sale } from 'src/admin/sale/entity/sale.entity'
+import { WarehouseProduct } from 'src/admin/warehouse-product/entity/warehouse-product.entity'
 import { GenericEntity } from 'src/libs/class/entity'
 import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm'
 
@@ -12,7 +13,7 @@ export class SaleDetail extends GenericEntity {
   saleId: number
 
   @Column()
-  productId: number
+  warehouseProductId: number
 
   @Column()
   quantity: number
@@ -24,7 +25,7 @@ export class SaleDetail extends GenericEntity {
   @JoinColumn({ name: 'saleId' })
   sale: Promise<Sale>
 
-  @ManyToOne(() => Product, product => product.saleDetails)
-  @JoinColumn({ name: 'productId' })
-  product: Promise<Product>
+  @ManyToOne(() => WarehouseProduct, warehouseProduct => warehouseProduct.saleDetails)
+  @JoinColumn({ name: 'warehouseProductId' })
+  warehouseProduct: Promise<WarehouseProduct>
 }
