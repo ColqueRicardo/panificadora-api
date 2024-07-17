@@ -5,4 +5,6 @@ import { Entity } from 'typeorm'
   name: 'movements',
 })
 export class Movement extends GenericEntity {
+
+
 }

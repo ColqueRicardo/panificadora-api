@@ -6,5 +6,11 @@ import { Column, Entity } from 'typeorm'
 })
 export class User extends GenericEntity {
   @Column()
-  name:string
+  name: string
+
+  @Column()
+  email: string
+
+  @Column()
+  password: string
 }

@@ -15,7 +15,7 @@ import { Module } from '@nestjs/common'
 @Module({
 	imports: [
 		UserModule,
-			ProductModule,
+		ProductModule,
 		SupplierModule,
 		WarehouseModule,
 		WarehouseProductModule,
@@ -26,6 +26,6 @@ import { Module } from '@nestjs/common'
 		SaleModule,
 		SaleDetailModule,
 		PurchaseDetailModule,
-],
+	],
 })
 export class AdminModule { }
