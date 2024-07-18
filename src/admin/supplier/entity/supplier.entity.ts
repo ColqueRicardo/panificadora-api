@@ -1,4 +1,3 @@
-import { Product } from 'src/admin/product/entity/product.entity'
 import { Purchase } from 'src/admin/purchase/entity/purchase.entity'
 import { SupplierProduct } from 'src/admin/supplier-product/entity/supplier-product.entity'
 import { GenericEntity } from 'src/libs/class/entity'

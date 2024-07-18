@@ -26,7 +26,7 @@ export class Sale extends GenericEntity {
   discount: number
 
   @Column()
-  store: number
+  storeId: number
 
   @ManyToOne(() => Customer, customer => customer.sales)
   @JoinColumn({ name: 'customerId' })
@@ -37,7 +37,7 @@ export class Sale extends GenericEntity {
 
   @ManyToOne(() => Store, store => store.sales)
   @JoinColumn({ name: 'storeId' })
-  Store: Promise<Store>
+  store: Promise<Store>
 
   @OneToOne(() => Movement, movement => movement.sale)
   movement: Promise<Movement>

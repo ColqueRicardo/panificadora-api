@@ -35,3 +35,6 @@ ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-enti
 
 docker run -e POSTGRES_USER=root -e POSTGRES_PASSWORD=asd456 -e POSTGRES_DB=panificadora -p 3306:5433 -d postgres
 
+## docker backup
+
+docker exec -t panificadora-api_postgres_1 pg_dump -U root -s panificadora > "C:\Users\rc\Desktop\project test\implements\panificadora\panificadora-api\src\backup\panificadora-schema.sql"
