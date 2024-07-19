@@ -2,9 +2,12 @@ import { DataSource, QueryRunner, Repository } from 'typeorm'
 import { Sale } from './entity/sale.entity'
 import { GenericRepository } from 'src/libs/class/repository'
 import { InjectRepository } from '@nestjs/typeorm'
-import { CreateSaleDto } from './entity/sale.dto'
+import { CustomSaleDto } from './entity/sale.dto'
 import { GenericResult } from 'src/libs/interfaces/result'
 import { SaleDetail } from '../sale-detail/entity/sale-detail.entity'
+import { Store } from '../store/entity/store.entity'
+import { Customer } from '../customer/entity/customer.entity'
+import { Product } from '../product/entity/product.entity'
 
 export class SaleRepository extends GenericRepository<Sale> {
   constructor(
@@ -17,7 +20,7 @@ export class SaleRepository extends GenericRepository<Sale> {
     this.modelClass = Sale
   }
 
-  async customCreate(model: CreateSaleDto, transaction?: QueryRunner): Promise<GenericResult> {
+  async customCreate(model: CustomSaleDto, transaction?: QueryRunner): Promise<GenericResult> {
     const queryRunner = transaction ? transaction : this.dataSource.createQueryRunner()
     const result: GenericResult = { result: true, message: null }
     try {
@@ -85,4 +88,34 @@ export class SaleRepository extends GenericRepository<Sale> {
   //   }
   // }
 
+  async customGetSale(id: number): Promise<CustomSaleDto> {
+    const query = await this.engineRepository.createQueryBuilder("s")
+      .select([
+        `s.id AS id`,
+        `s.customerId AS customerId`,
+        `s.date AS date`,
+        `s.total AS total`,
+        `s.discount AS discount`,
+        `s.storeId AS "storeId"`,
+        `c.name as "customerName"`,
+        'st.name as "storeName"',
+        `json_agg(
+          json_build_object(
+            'id', sd."productId",
+            'quantity', sd."quantity",
+            'price', sd."price",
+            'name', p.name
+          )
+        ) AS products`
+      ])
+      .innerJoin(SaleDetail, "sd", "sd.saleId=s.id")
+      .innerJoin(Product, "p", "p.id=sd.productId")
+      .innerJoin(Store, "st", "st.id=s.storeId")
+      .innerJoin(Customer, "c", "c.id=s.customerId")
+      .where("s.id= :id", { id })
+      .groupBy("s.id, s.customerId, s.date, s.total, s.discount, s.storeId, c.name,st.name")
+      .getRawOne()
+    console.log(query)
+    return query
+  }
 }

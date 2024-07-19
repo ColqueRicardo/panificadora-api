@@ -11,9 +11,12 @@ class SaleProductDto {
 
   @IsDecimal()
   price: number;
+
+  @IsOptional()
+  name:string
 }
 
-export class CreateSaleDto {
+export class CustomSaleDto {
   @IsInt()
   customerId: number;
 
@@ -34,11 +37,17 @@ export class CreateSaleDto {
   @ValidateNested({ each: true })
   @Type(() => SaleProductDto)
   products: SaleProductDto[];
+
+  @IsOptional()
+  customerName: string
+
+  @IsOptional()
+  storeName: string
 }
 
 export class CreateModelDto {
   @IsNotEmpty()
-  model:CreateSaleDto
+  model: CustomSaleDto
 }
 
 
