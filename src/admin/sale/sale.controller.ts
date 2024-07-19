@@ -15,7 +15,7 @@ export class SaleController {
 
   @Post('list-page')
   async listPage(@Body() listPageDto: ListPageDto) {
-    return await this.saleRepository.listPage(listPageDto);
+    return await this.saleRepository.customListPage(listPageDto);
   }
 
   @Post('create')

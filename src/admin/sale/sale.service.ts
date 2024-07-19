@@ -8,6 +8,8 @@ import { SaleDetail } from '../sale-detail/entity/sale-detail.entity'
 import { Store } from '../store/entity/store.entity'
 import { Customer } from '../customer/entity/customer.entity'
 import { Product } from '../product/entity/product.entity'
+import { FiltersDto, ListPage, ListPageDto } from 'src/libs/class/generic.dto'
+import { DEFAULT_PAGE } from 'src/libs/const/list-page-const'
 
 export class SaleRepository extends GenericRepository<Sale> {
   constructor(
@@ -115,7 +117,44 @@ export class SaleRepository extends GenericRepository<Sale> {
       .where("s.id= :id", { id })
       .groupBy("s.id, s.customerId, s.date, s.total, s.discount, s.storeId, c.name,st.name")
       .getRawOne()
-    console.log(query)
     return query
+  }
+
+  async customListPage(listPageDto: ListPageDto): Promise<ListPage> {
+    let { page } = listPageDto;
+    const { limit, order, filters } = listPageDto;
+    if (page < DEFAULT_PAGE) {
+      page = DEFAULT_PAGE
+    }
+    const alias = "alias"
+    const query = this.engineRepository.createQueryBuilder(alias)
+      .select([
+        'alias.id AS id',
+        'alias.customerId AS "customerId"',
+        'alias.date AS date',
+        'alias.total AS total',
+        'alias.discount AS discount',
+        'alias.storeId AS "storeId"',
+        'c.name as "customerName"',
+        's.name as "storeName"'
+      ])
+      .innerJoin(Customer, "c", "c.id=alias.customerId")
+      .innerJoin(Store, "s", 's.id=alias.storeId')
+      .orderBy(`${order.key}`, order.order)
+    filters.forEach((filter: FiltersDto) => {
+      query.andWhere(` ${alias}.${filter.key}= :${filter.key}`).setParameter(`${filter.key}`, filter.value)
+    })
+    const totalRecords: number = await query.getCount()
+    const result = await query.offset(((page - 1) * limit))
+      .limit(limit)
+      .getRawMany()
+    const response: ListPage = {
+      count: totalRecords,
+      limit: listPageDto.limit,
+      page: listPageDto.page,
+      records: result,
+      totalPage: (~~(totalRecords / limit)) + 1
+    }
+    return response
   }
 }

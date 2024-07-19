@@ -1,6 +1,7 @@
 import { GenericEntity } from 'src/libs/class/entity'
 import { IsInt, IsNotEmpty, IsArray, ValidateNested, IsOptional, IsDecimal } from 'class-validator';
 import { Type } from 'class-transformer';
+import { ListPageDto } from 'src/libs/class/generic.dto';
 
 class SaleProductDto {
   @IsInt()
@@ -13,7 +14,7 @@ class SaleProductDto {
   price: number;
 
   @IsOptional()
-  name:string
+  name: string
 }
 
 export class CustomSaleDto {
@@ -52,4 +53,6 @@ export class CreateModelDto {
 
 
 export class SaleDto extends GenericEntity {
+  customerName: string
+  storeName: string
 }
