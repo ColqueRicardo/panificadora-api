@@ -14,12 +14,11 @@ export class Product extends GenericEntity {
 
   @Column()
   description: string
-
-  @Column()
+  @Column({ nullable: false, type: "float", default: 0.0 })
   price: number
 
-  @Column()
-  isFinalProduct: number
+  @Column({ default: false })
+  isFinalProduct: boolean
 
   @OneToMany(() => PurchaseDetail, purchaseDetail => purchaseDetail.product)
   purchaseDetails: Promise<PurchaseDetail[]>

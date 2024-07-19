@@ -21,6 +21,7 @@ export class ProductController {
 
   @Post("create")
   async create(@Body('model') model: ProductDto): Promise<GenericResult> {
+    console.log(model)
     return this.productRepository.create(model)
   }
 
