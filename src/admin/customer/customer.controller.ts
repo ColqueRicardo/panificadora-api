@@ -1,9 +1,9 @@
-import { Body, Controller, Delete,Param, Get, Post, Put } from '@nestjs/common'
+import { Body, Controller, Delete, Param, Get, Post, Put } from '@nestjs/common'
 import { CustomerRepository } from './customer.service'
 import { Customer } from './entity/customer.entity'
 import { GenericResult } from 'src/libs/interfaces/result'
 import { CustomerDto } from './entity/customer.dto'
-import { ListPageDto } from 'src/libs/class/generic.dto'
+import { FiltersDto, ListPageDto } from 'src/libs/class/generic.dto'
 
 @Controller('customer')
 export class CustomerController {
@@ -18,6 +18,12 @@ export class CustomerController {
   async listPage(@Body() listPageDto: ListPageDto) {
     return await this.customerRepository.listPage(listPageDto);
   }
+
+  @Post('get-all')
+  async getAll(@Body() filters: FiltersDto[]) {
+    return await this.customerRepository.getAll(filters);
+  }
+
 
   @Post("create")
   async create(@Body('model') model: CustomerDto): Promise<GenericResult> {

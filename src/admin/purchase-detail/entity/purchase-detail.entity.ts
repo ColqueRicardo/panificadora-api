@@ -20,7 +20,7 @@ export class PurchaseDetail extends GenericEntity {
   @Column()
   quantity: number
 
-  @Column()
+  @Column({ nullable: false, type: "float", default: 0.0 })
   price: number
 
   @ManyToOne(() => Purchase, purchase => purchase.purchaseDetails)

@@ -13,4 +13,5 @@ export class WarehouseProductRepository extends GenericRepository<WarehouseProdu
 
     this.modelClass = WarehouseProduct
   }
+
 }

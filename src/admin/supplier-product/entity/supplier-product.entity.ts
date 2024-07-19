@@ -8,7 +8,7 @@ import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm'
 })
 export class SupplierProduct extends GenericEntity {
 
-  @Column()
+  @Column({ nullable: false, type: "float", default: 0.0 })
   price: number
 
   @Column()

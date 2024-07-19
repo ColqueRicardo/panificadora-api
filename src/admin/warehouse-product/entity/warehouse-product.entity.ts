@@ -27,7 +27,4 @@ export class WarehouseProduct extends GenericEntity {
   @ManyToOne(() => Warehouse, warehouse => warehouse.stocks)
   @JoinColumn({ name: 'warehouseId' })
   warehouse: Promise<Warehouse>
-
-  @OneToMany(() => SaleDetail, saleDetail => saleDetail.warehouseProduct)
-  saleDetails: Promise<SaleDetail[]>
 }

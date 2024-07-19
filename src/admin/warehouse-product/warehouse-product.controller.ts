@@ -1,4 +1,4 @@
-import { Body, Controller, Delete,Param, Get, Post, Put } from '@nestjs/common'
+import { Body, Controller, Delete,Param, Get, Post, Put, Query } from '@nestjs/common'
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { WarehouseProductRepository } from './warehouse-product.service'
 import { WarehouseProduct } from './entity/warehouse-product.entity'

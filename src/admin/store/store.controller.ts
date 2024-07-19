@@ -3,7 +3,7 @@ import { StoreRepository } from './store.service'
 import { Store } from './entity/store.entity'
 import { GenericResult } from 'src/libs/interfaces/result'
 import { StoreDto } from './entity/store.dto'
-import { ListPageDto } from 'src/libs/class/generic.dto'
+import { FiltersDto, ListPageDto } from 'src/libs/class/generic.dto'
 
 @Controller('store')
 export class StoreController {
@@ -18,6 +18,12 @@ export class StoreController {
   async listPage(@Body() listPageDto: ListPageDto) {
     return await this.storeRepository.listPage(listPageDto);
   }
+
+  @Post('get-all')
+  async getAll(@Body() filters: FiltersDto[]) {
+    return await this.storeRepository.getAll(filters);
+  }
+
 
   @Post("create")
   async create(@Body('model') model: StoreDto): Promise<GenericResult> {

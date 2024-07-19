@@ -1,4 +1,5 @@
 import { PurchaseDetail } from 'src/admin/purchase-detail/entity/purchase-detail.entity'
+import { SaleDetail } from 'src/admin/sale-detail/entity/sale-detail.entity'
 import { SupplierProduct } from 'src/admin/supplier-product/entity/supplier-product.entity'
 import { WarehouseProduct } from 'src/admin/warehouse-product/entity/warehouse-product.entity'
 import { GenericEntity } from 'src/libs/class/entity'
@@ -14,6 +15,7 @@ export class Product extends GenericEntity {
 
   @Column()
   description: string
+
   @Column({ nullable: false, type: "float", default: 0.0 })
   price: number
 
@@ -28,4 +30,7 @@ export class Product extends GenericEntity {
 
   @OneToMany(() => SupplierProduct, supplierProduct => supplierProduct.product)
   supplierProduct: Promise<SupplierProduct[]>
+
+  @OneToMany(() => SaleDetail, saleDetail => saleDetail.product)
+  saleDetails: Promise<SaleDetail[]>
 }

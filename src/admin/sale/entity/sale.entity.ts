@@ -19,10 +19,10 @@ export class Sale extends GenericEntity {
   @Column()
   date: Date
 
-  @Column()
+  @Column({ nullable: false, type: "float", default: 0.0 })
   total: number
 
-  @Column()
+  @Column({ nullable: true, default: null })
   discount: number
 
   @Column()

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Param, Get, Post, Put } from '@nestjs/common'
+import { Body, Controller, Delete, Param, Get, Post, Put, Query } from '@nestjs/common'
 import { ProductRepository } from './product.service'
 import { Product } from './entity/product.entity'
 import { GenericResult } from 'src/libs/interfaces/result'
@@ -21,7 +21,6 @@ export class ProductController {
 
   @Post("create")
   async create(@Body('model') model: ProductDto): Promise<GenericResult> {
-    console.log(model)
     return this.productRepository.create(model)
   }
 
@@ -34,4 +33,10 @@ export class ProductController {
   async delete(@Param('id') id: number): Promise<GenericResult> {
     return this.productRepository.delete(id)
   }
+
+  @Post("search")
+  async search(@Body('query') query: string): Promise<Product[]> {
+    return this.productRepository.search(query)
+  }
+
 }
