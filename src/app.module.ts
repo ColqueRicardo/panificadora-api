@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { AdminModule } from './admin/admin.module';
 import { DatabaseProvider } from './libs/database/config';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/internal/internal-auth.module';
 
 @Module({
   imports: [
@@ -11,7 +12,8 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
     }),
     DatabaseProvider,
-    AdminModule
+    AdminModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],

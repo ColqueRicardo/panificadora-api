@@ -8,10 +8,8 @@ export interface GoogleUser {
 
 export interface IJwtAuth {
   id: number,
-  firstName?: string,
-  lastName?:string,
-  userName?:string
+  name:string
   email: string,
-  typeUser:number
+  typeUserId:number
 }
 
