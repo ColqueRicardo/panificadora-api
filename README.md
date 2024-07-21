@@ -1,6 +1,8 @@
 ## generator
 ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-entities" "C:\Users\rc\Desktop\project test\implements\panificadora\panificadora-api\src\admin" user
 
+ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-entities" "C:\Users\rc\Desktop\project test\implements\panificadora\panificadora-api\src\admin" type-user
+
 ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-entities" "C:\Users\rc\Desktop\project test\implements\panificadora\panificadora-api\src\admin" product
 
 ts-node "C:/Users/rc/Desktop/project test/scripter/generator/generator-nest-entities" "C:\Users\rc\Desktop\project test\implements\panificadora\panificadora-api\src\admin" supplier

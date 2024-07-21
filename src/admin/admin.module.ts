@@ -12,6 +12,7 @@ import { SaleDetailModule } from './sale-detail/sale-detail.module';
 import { PurchaseDetailModule } from './purchase-detail/purchase-detail.module';
 import { SupplierProductModule } from './supplier-product/supplier-product.module';
 import { MovementTypeModule } from './movement-type/movement-type.module';
+import { TypeUserModule } from './type-user/type-user.module';
 import { Module } from '@nestjs/common'
 
 @Module({
@@ -30,6 +31,7 @@ import { Module } from '@nestjs/common'
 		PurchaseDetailModule,
 		SupplierProductModule,
 		MovementTypeModule,
-	],
+			TypeUserModule,
+],
 })
 export class AdminModule { }
